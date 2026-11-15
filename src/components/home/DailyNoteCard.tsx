@@ -5,7 +5,7 @@ import { Feather, BookOpen, Sparkles } from "lucide-react";
 
 export const DailyNoteCard: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 relative">
+    <section id="note" className="py-16 sm:py-20 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         {/* Journal Leaf Container */}
         <div className="relative bg-[#FFFDF9] rounded-3xl p-8 sm:p-12 md:p-14 border border-[#C5A16B]/40 shadow-storybook-lg overflow-hidden">

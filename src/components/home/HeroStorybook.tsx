@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Compass, ArrowDown } from "lucide-react";
+import { Sparkles, Heart, ArrowDown } from "lucide-react";
 import { BotanicalDivider } from "../ui/BotanicalDivider";
 import { CinematicGardenBackground } from "./CinematicGardenBackground";
 import { useGardenAtmosphere } from "@/context/GardenAtmosphereContext";
@@ -110,31 +110,23 @@ export const HeroStorybook: React.FC = () => {
         {/* Entrance Buttons */}
         <div className="mt-6 sm:mt-7 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto">
           <Link
-            href="#spaces"
-            className={`w-full sm:w-auto px-7 py-3 rounded-full font-medium text-xs sm:text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2 group ${
-              isNight
-                ? "bg-[#B88B4A] hover:bg-[#D4A359] text-[#132521] font-semibold shadow-[0_4px_20px_rgba(184,139,74,0.35)]"
-                : "bg-[#60463E] text-[#F7F1E7] shadow-[0_4px_16px_rgba(23,45,41,0.18)] hover:bg-[#172D29] hover:shadow-[0_6px_20px_rgba(23,45,41,0.25)]"
-            }`}
+            href="/birthday"
+            className="w-full sm:w-auto px-8 py-3.5 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2 group shadow-[0_4px_24px_rgba(253,224,139,0.35)] bg-gradient-to-r from-[#FDE08B] via-[#F5D076] to-[#E5BD60] text-[#172D29] hover:scale-105 border border-[#B88B4A]/60"
           >
-            <Compass
-              className={`w-4 h-4 group-hover:rotate-45 transition-transform duration-300 ${
-                isNight ? "text-[#132521]" : "text-[#B88B4A]"
-              }`}
-            />
-            <span>Wander Through The Rooms</span>
+            <Heart className="w-4 h-4 text-[#B83232] fill-[#B83232] animate-pulse" />
+            <span>Open Birthday Celebration (16 Nov)</span>
+            <Sparkles className="w-4 h-4 text-[#B88B4A]" />
           </Link>
 
           <Link
-            href="#universe"
+            href="#note"
             className={`w-full sm:w-auto px-7 py-3 rounded-full font-medium text-xs sm:text-sm tracking-wide transition-all duration-300 flex items-center justify-center gap-2 group shadow-xs ${
               isNight
                 ? "bg-[#172D29]/80 backdrop-blur-sm text-[#F7F1E7] border border-[#B88B4A]/50 hover:border-[#FDE08B] hover:text-[#FDE08B]"
                 : "bg-[#F7F1E7]/85 backdrop-blur-sm text-[#60463E] border border-[#B88B4A]/40 hover:border-[#B88B4A] hover:bg-[#F7F1E7] hover:text-[#172D29]"
             }`}
           >
-            <Sparkles className="w-4 h-4 text-[#FDE08B] group-hover:scale-110 transition-transform" />
-            <span>Visit Our Little Universe</span>
+            <span>Read Daily Note</span>
           </Link>
         </div>
 
@@ -149,7 +141,7 @@ export const HeroStorybook: React.FC = () => {
               isNight ? "text-[#FDE08B]" : "text-[#B88B4A]"
             }`}
           />
-          <span>Turn the page to explore six living spaces</span>
+          <span>Turn the page for Anavi&apos;s personal chronicle</span>
         </div>
       </div>
     </section>

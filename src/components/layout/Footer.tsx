@@ -32,31 +32,13 @@ export const Footer: React.FC = () => {
           {/* Navigation chapters */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-sm text-cocoa mb-8">
             <Link href="/" className="hover:text-gold transition-colors font-medium">
-              Home
+              Home Garden
             </Link>
-            <Link href="/spaces/memories" className="hover:text-gold transition-colors font-medium">
-              House of Memories
-            </Link>
-            <Link href="/spaces/garden" className="hover:text-gold transition-colors font-medium">
-              Garden of Becoming
-            </Link>
-            <Link href="/spaces/library" className="hover:text-gold transition-colors font-medium">
-              Library of Words
-            </Link>
-            <Link href="/spaces/museum" className="hover:text-gold transition-colors font-medium">
-              Museum of Her
-            </Link>
-            <Link href="/spaces/kitchen" className="hover:text-gold transition-colors font-medium">
-              Kitchen of Little Joys
-            </Link>
-            <Link href="/spaces/observatory" className="hover:text-gold transition-colors font-medium">
-              Observatory of Dreams
-            </Link>
-            <Link href="/universe" className="hover:text-gold transition-colors font-medium text-celestial-gold bg-celestial/90 px-3 py-1 rounded-full text-xs">
-              Our Little Universe
-            </Link>
-            <Link href="/admin" className="hover:text-gold transition-colors font-medium text-xs border border-gold/40 px-3 py-1 rounded-full">
-              Sanctuary Manager
+            <Link
+              href="/birthday"
+              className="hover:text-gold transition-colors font-medium text-amber-900 bg-amber-100/80 px-3.5 py-1 rounded-full border border-amber-300/60 font-semibold"
+            >
+              Anavi&apos;s Birthday Celebration (16 Nov) ✨
             </Link>
           </div>
 

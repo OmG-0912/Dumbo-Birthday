@@ -1,9 +1,7 @@
 import React from "react";
 import { HeroStorybook } from "@/components/home/HeroStorybook";
 import { DailyNoteCard } from "@/components/home/DailyNoteCard";
-import { DestinationRooms } from "@/components/home/DestinationRooms";
-import { RecentMemories } from "@/components/home/RecentMemories";
-import { CelestialUniverse } from "@/components/home/CelestialUniverse";
+import { BirthdayInvitationCard } from "@/components/home/BirthdayInvitationCard";
 import { CompanionAvatars } from "@/components/characters/CompanionAvatars";
 import { AtmosphereURLSync } from "@/components/home/AtmosphereURLSync";
 import { AtmosphereMode } from "@/hooks/useGardenTimeOfDay";
@@ -31,17 +29,11 @@ export default async function HomePage({
       {/* 2. Daily Note with Wax Seal */}
       <DailyNoteCard />
 
-      {/* 3. Six Destination Room Cards */}
-      <DestinationRooms />
+      {/* 3. Dedicated Birthday Invitation & Experience Showcase */}
+      <BirthdayInvitationCard />
 
       {/* 4. Four Original Recurring Storybook Companions */}
       <CompanionAvatars />
-
-      {/* 5. Recent Memories Strip with Realistic Placeholders */}
-      <RecentMemories />
-
-      {/* 6. Dark Navy Celestial Shared Universe */}
-      <CelestialUniverse />
     </div>
   );
 }

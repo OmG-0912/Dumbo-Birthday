@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Sparkles, Menu, X, ChevronDown, Eye, Settings, Heart } from "lucide-react";
+import { Sparkles, Menu, X, Heart } from "lucide-react";
 import { WaxSealBadge } from "../ui/WaxSealBadge";
 import { useGardenAtmosphere } from "@/context/GardenAtmosphereContext";
 import { AccountSwitcherPill } from "@/components/ui/AccountSwitcherPill";
@@ -10,7 +10,6 @@ import { AccountSwitcherPill } from "@/components/ui/AccountSwitcherPill";
 export const Navigation: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
-  const [isSpacesOpen, setIsSpacesOpen] = useState(false);
 
   const { isNight } = useGardenAtmosphere();
 
@@ -21,15 +20,6 @@ export const Navigation: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const roomSubLinks = [
-    { name: "House of Memories", href: "/spaces/memories", room: "Room I" },
-    { name: "Garden of Becoming", href: "/spaces/garden", room: "Room II" },
-    { name: "Library of Words", href: "/spaces/library", room: "Room III" },
-    { name: "Museum of Her", href: "/spaces/museum", room: "Room IV" },
-    { name: "Kitchen of Little Joys", href: "/spaces/kitchen", room: "Room V" },
-    { name: "Observatory of Dreams", href: "/spaces/observatory", room: "Room VI" },
-  ];
 
   // Dynamic Day/Night Pill Glass Styling
   const pillGlassClasses = isNight
@@ -72,7 +62,7 @@ export const Navigation: React.FC = () => {
 
           {/* 2. Center Floating Main Navigation Pill (Desktop) */}
           <nav
-            className={`pointer-events-auto hidden md:flex items-center gap-1 lg:gap-1.5 px-4 py-1.5 rounded-full border transition-all duration-300 ${pillGlassClasses}`}
+            className={`pointer-events-auto hidden md:flex items-center gap-2 px-5 py-1.5 rounded-full border transition-all duration-300 ${pillGlassClasses}`}
           >
             <Link
               href="/"
@@ -82,115 +72,18 @@ export const Navigation: React.FC = () => {
                   : "text-[#60463E] hover:text-[#172D29] hover:bg-[#B88B4A]/10"
               }`}
             >
-              Home
+              Home Garden
             </Link>
-
-            {/* My Spaces Dropdown */}
-            <div className="relative" onMouseLeave={() => setIsSpacesOpen(false)}>
-              <button
-                type="button"
-                onClick={() => setIsSpacesOpen(!isSpacesOpen)}
-                onMouseEnter={() => setIsSpacesOpen(true)}
-                className={`flex items-center gap-1 px-3 py-1 rounded-full text-xs lg:text-sm font-medium transition-all ${
-                  isNight
-                    ? "text-[#F7F1E7]/90 hover:text-[#FDE08B] hover:bg-white/10"
-                    : "text-[#60463E] hover:text-[#172D29] hover:bg-[#B88B4A]/10"
-                }`}
-              >
-                <span>Six Rooms</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    isNight ? "text-[#FDE08B]" : "text-[#B88B4A]"
-                  }`}
-                />
-              </button>
-
-              {isSpacesOpen && (
-                <div
-                  className={`absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 rounded-2xl p-2 z-50 border ${
-                    isNight
-                      ? "bg-[#132521]/98 backdrop-blur-xl border-[#B88B4A]/50 shadow-[0_16px_40px_rgba(0,0,0,0.7)]"
-                      : "bg-[#F7F1E7]/96 backdrop-blur-md border-[#B88B4A]/40 shadow-[0_12px_36px_rgba(23,45,41,0.18)]"
-                  }`}
-                >
-                  <div
-                    className={`px-3 py-1.5 text-[10px] uppercase tracking-wider font-semibold border-b mb-1 ${
-                      isNight
-                        ? "text-[#FDE08B] border-[#B88B4A]/30"
-                        : "text-[#B88B4A] border-[#B88B4A]/20"
-                    }`}
-                  >
-                    Six Enchanted Rooms
-                  </div>
-                  {roomSubLinks.map((room) => (
-                    <Link
-                      key={room.name}
-                      href={room.href}
-                      onClick={() => setIsSpacesOpen(false)}
-                      className={`flex items-center justify-between px-3 py-2 rounded-xl text-xs font-medium transition-colors ${
-                        isNight
-                          ? "text-[#F7F1E7]/90 hover:bg-white/10 hover:text-[#FDE08B]"
-                          : "text-[#60463E] hover:bg-[#B88B4A]/10 hover:text-[#172D29]"
-                      }`}
-                    >
-                      <span>{room.name}</span>
-                      <span
-                        className={`text-[10px] font-serif italic ${
-                          isNight ? "text-[#FDE08B]" : "text-[#B88B4A]"
-                        }`}
-                      >
-                        {room.room}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
 
             {/* Birthday Experience Highlight Pill */}
             <Link
               href="/birthday"
-              className="relative group ml-1 px-3 py-1 rounded-full text-xs uppercase tracking-wider font-semibold text-[#D6A0A0] bg-[#FAF5ED]/90 hover:bg-[#D6A0A0]/20 border border-[#D6A0A0]/50 shadow-xs transition-all duration-300 flex items-center gap-1.5"
-              title="Anavi's Birthday Experience (16 November)"
+              className="relative group ml-1 px-4 py-1.5 rounded-full text-xs lg:text-sm font-semibold text-[#172D29] bg-gradient-to-r from-[#FDE08B] to-[#F3C978] hover:from-[#FFF0B8] hover:to-[#FDE08B] shadow-[0_2px_14px_rgba(184,139,74,0.35)] border border-[#B88B4A]/50 transition-all duration-300 flex items-center gap-2 hover:scale-105"
+              title="Anavi's Birthday Celebration (16 November)"
             >
-              <Heart className="w-3 h-3 text-[#D6A0A0] fill-[#D6A0A0] animate-pulse" />
-              <span>16 Nov ✨</span>
-            </Link>
-
-            {/* Our Little Universe Highlight Pill */}
-            <Link
-              href="/universe"
-              className="relative group ml-1 px-3.5 py-1 rounded-full text-xs uppercase tracking-wider font-semibold text-[#FDE08B] bg-[#172D29] hover:bg-[#1E3B36] border border-[#FDE08B]/40 shadow-xs transition-all duration-300 flex items-center gap-1.5 hover:shadow-celestial-glow"
-            >
-              <Sparkles className="w-3 h-3 text-[#FDE08B] animate-shimmer" />
-              <span>Universe</span>
-            </Link>
-
-            {/* Admin Management Link */}
-            <Link
-              href="/admin"
-              className={`px-3 py-1 rounded-full text-xs lg:text-sm font-medium transition-all flex items-center gap-1.5 ${
-                isNight
-                  ? "text-[#F7F1E7]/90 hover:text-[#FDE08B] hover:bg-white/10"
-                  : "text-[#60463E] hover:text-[#172D29] hover:bg-[#B88B4A]/10"
-              }`}
-            >
-              <Settings className="w-3.5 h-3.5 text-gold" />
-              <span>Manage</span>
-            </Link>
-
-            {/* 3D Showcase Link */}
-            <Link
-              href="/showcase"
-              className={`px-2.5 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1 opacity-75 hover:opacity-100 ${
-                isNight
-                  ? "text-[#F7F1E7]/80 hover:text-[#FDE08B]"
-                  : "text-[#60463E]/80 hover:text-[#172D29]"
-              }`}
-              title="View Botanical 3D Asset Showcase"
-            >
-              <Eye className="w-3 h-3 text-gold" />
-              <span>3D</span>
+              <Heart className="w-3.5 h-3.5 text-[#B83232] fill-[#B83232] animate-pulse" />
+              <span>Anavi&apos;s Birthday (16 Nov)</span>
+              <Sparkles className="w-3.5 h-3.5 text-[#B88B4A]" />
             </Link>
           </nav>
 
@@ -200,14 +93,14 @@ export const Navigation: React.FC = () => {
               <AccountSwitcherPill />
             </div>
 
-            {/* Mobile Floating Pill with Hamburger button */}
+            {/* Mobile Floating Pill with Direct Birthday & Hamburger button */}
             <div className={`md:hidden flex items-center gap-1.5 p-1 rounded-full border ${pillGlassClasses}`}>
               <Link
-                href="/universe"
-                className="px-2.5 py-1 rounded-full text-[10px] font-semibold text-[#FDE08B] bg-[#172D29] border border-[#FDE08B]/40 flex items-center gap-1"
+                href="/birthday"
+                className="px-3 py-1 rounded-full text-[11px] font-semibold text-[#172D29] bg-gradient-to-r from-[#FDE08B] to-[#F3C978] border border-[#B88B4A]/50 flex items-center gap-1.5 shadow-xs"
               >
-                <Sparkles className="w-3 h-3 text-[#FDE08B]" />
-                <span>Universe</span>
+                <Heart className="w-3 h-3 text-[#B83232] fill-[#B83232] animate-pulse" />
+                <span>16 Nov 🎂</span>
               </Link>
               <button
                 type="button"
@@ -242,15 +135,11 @@ export const Navigation: React.FC = () => {
               <AccountSwitcherPill />
             </div>
 
-            <div
-              className={`flex flex-col space-y-2 pb-3 border-b ${
-                isNight ? "border-[#B88B4A]/30" : "border-[#B88B4A]/25"
-              }`}
-            >
+            <div className="flex flex-col space-y-3 pt-1">
               <Link
                 href="/"
                 onClick={() => setIsMobileOpen(false)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors ${
+                className={`px-4 py-3 rounded-2xl text-sm font-medium transition-colors ${
                   isNight
                     ? "text-[#F7F1E7]/90 hover:bg-white/10 hover:text-[#FDE08B]"
                     : "text-[#60463E] hover:bg-[#B88B4A]/10 hover:text-[#172D29]"
@@ -261,71 +150,14 @@ export const Navigation: React.FC = () => {
               <Link
                 href="/birthday"
                 onClick={() => setIsMobileOpen(false)}
-                className="px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center justify-between bg-[#D6A0A0]/15 text-[#3D2A24] border border-[#D6A0A0]/40"
+                className="px-4 py-3.5 rounded-2xl text-sm font-semibold transition-all flex items-center justify-between bg-gradient-to-r from-[#FDE08B] to-[#F3C978] text-[#172D29] shadow-md border border-[#B88B4A]/50"
               >
-                <div className="flex items-center gap-2">
-                  <Heart className="w-4 h-4 text-[#D6A0A0] fill-[#D6A0A0]" />
-                  <span>Anavi&apos;s Birthday (16 Nov)</span>
+                <div className="flex items-center gap-2.5">
+                  <Heart className="w-4 h-4 text-[#B83232] fill-[#B83232] animate-pulse" />
+                  <span>Anavi&apos;s Birthday Experience</span>
                 </div>
-                <span className="text-[10px] uppercase font-sans tracking-wider text-[#B88B4A] font-semibold">Special</span>
+                <Sparkles className="w-4 h-4 text-[#B88B4A]" />
               </Link>
-              <Link
-                href="/universe"
-                onClick={() => setIsMobileOpen(false)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isNight
-                    ? "text-[#FDE08B] hover:bg-white/10"
-                    : "text-gold-deep hover:bg-[#B88B4A]/10"
-                }`}
-              >
-                <Sparkles className="w-4 h-4 text-gold" />
-                <span>Our Little Universe</span>
-              </Link>
-              <Link
-                href="/admin"
-                onClick={() => setIsMobileOpen(false)}
-                className={`px-4 py-2 rounded-xl text-sm font-medium transition-colors flex items-center gap-2 ${
-                  isNight
-                    ? "text-[#F7F1E7]/90 hover:bg-white/10 hover:text-[#FDE08B]"
-                    : "text-[#60463E] hover:bg-[#B88B4A]/10 hover:text-[#172D29]"
-                }`}
-              >
-                <Settings className="w-4 h-4 text-gold" />
-                <span>Sanctuary Content Manager</span>
-              </Link>
-            </div>
-
-            <div className="space-y-1">
-              <div
-                className={`px-4 text-[10px] uppercase tracking-wider font-semibold ${
-                  isNight ? "text-[#FDE08B]" : "text-[#B88B4A]"
-                }`}
-              >
-                Explore The Six Rooms
-              </div>
-              <div className="grid grid-cols-2 gap-1.5 pt-1">
-                {roomSubLinks.map((room) => (
-                  <Link
-                    key={room.name}
-                    href={room.href}
-                    onClick={() => setIsMobileOpen(false)}
-                    className={`p-2 rounded-lg text-xs font-medium transition-colors ${
-                      isNight
-                        ? "text-[#F7F1E7]/90 hover:bg-white/10 hover:text-[#FDE08B]"
-                        : "text-[#60463E] hover:bg-[#B88B4A]/10 hover:text-[#172D29]"
-                    }`}
-                  >
-                    <div>{room.name}</div>
-                    <div
-                      className={`text-[10px] font-serif italic ${
-                        isNight ? "text-[#FDE08B]" : "text-[#B88B4A]"
-                      }`}
-                    >
-                      {room.room}
-                    </div>
-                  </Link>
-                ))}
-              </div>
             </div>
           </div>
         </div>
