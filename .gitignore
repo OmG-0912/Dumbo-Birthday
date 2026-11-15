@@ -35,3 +35,4 @@ next-env.d.ts
 # Large 3D binary files exceeding GitHub 100MB limit
 *.bin
 public/models/
+push_to_github.bat
